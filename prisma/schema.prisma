@@ -1,6 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -10,62 +7,28 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model User {
-  id             String    @id @default(auto()) @map("_id") @db.ObjectId
-  email          String    @unique
-  firstName      String
-  lastName       String
-  phone          String    @unique
-  hashedPassword String
-  role           Int       @default(1450)
-  emailVerified  DateTime?
-  createdAt      DateTime  @default(now())
-  updatedAt      DateTime  @updatedAt
-
-  accounts     Account[]
-  wallets      Wallet[]
-  transactions Transaction[]
-}
-
 model Account {
-  id                String  @id @default(auto()) @map("_id") @db.ObjectId
-  userId            String  @db.ObjectId
-  type              String
-  provider          String
-  providerAccountId String
-  refresh_token     String? @db.String
-  access_token      String? @db.String
-  expires_at        Int?
-  token_type        String?
-  scope             String?
-  id_token          String? @db.String
-  session_state     String?
-  user              User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  id                String @id @default(auto()) @map("_id") @db.ObjectId
+  /// Field referred in an index, but found no data to define the type.
+  provider          Json?
+  /// Field referred in an index, but found no data to define the type.
+  providerAccountId Json?
 
   @@unique([provider, providerAccountId])
 }
 
-model Wallet {
-  id          String        @id @default(auto()) @map("_id") @db.ObjectId
-  userId      String        @db.ObjectId
-  type        String
-  balance     Int
-  createdAt   DateTime      @default(now())
-  updatedAt   DateTime      @updatedAt
-  User        User          @relation(fields: [userId], references: [id])
-  Transaction Transaction[]
+model Transaction {
+  id String @id @default(auto()) @map("_id") @db.ObjectId
 }
 
-model Transaction {
-  id        String   @id @default(auto()) @map("_id") @db.ObjectId
-  userId    String   @db.ObjectId
-  walletId  String   @db.ObjectId
-  type      String
-  amount    Int
-  balance   Int
-  status    Int
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  Wallet    Wallet   @relation(fields: [walletId], references: [id])
-  User      User     @relation(fields: [userId], references: [id])
+model User {
+  id    String @id @default(auto()) @map("_id") @db.ObjectId
+  /// Field referred in an index, but found no data to define the type.
+  email Json?  @unique
+  /// Field referred in an index, but found no data to define the type.
+  phone Json?  @unique
+}
+
+model Wallet {
+  id String @id @default(auto()) @map("_id") @db.ObjectId
 }
