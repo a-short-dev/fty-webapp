@@ -1,10 +1,8 @@
-"use client"
-import React from 'react'
+"use client";
+import React from "react";
 
 const DashboardClient = () => {
-  return (
-    <div>DashboardClient</div>
-  )
-}
+  return <div className="relative">DashboardClient</div>;
+};
 
-export default DashboardClient
+export default DashboardClient;

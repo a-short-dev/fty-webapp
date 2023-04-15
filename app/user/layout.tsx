@@ -1,14 +1,25 @@
 import React, { ReactNode } from "react";
 import Header from "./components/Header";
+import ClientOnly from "../components/ClientOnly";
+import EmptyState from "../components/EmptyState";
+import getCurrentUser from "../actions/getCurrentUser";
 
 interface Dash {
   children: React.ReactNode;
 }
-export default function DashboardLyout({ children }: Dash) {
+export default async function  DashboardLyout({ children }: Dash) {
+  const currentUser = await getCurrentUser();
+  if (!currentUser) {
+    return (
+      <ClientOnly>
+        <EmptyState title="Unauthorized" subtitle="Please login" />
+      </ClientOnly>
+    );
+  }
   return (
     <div className="bg-red-200 min-h-screen">
       <Header />
-      {children}
+      <div className="relative top-16 px-5">{children}</div>
     </div>
   );
 }
