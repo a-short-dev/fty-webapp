@@ -22,10 +22,10 @@ const Header = () => {
 
           <Image
             src="/next.svg"
-            width={34}
-            height={34}
+            width={50}
+            height={40}
             alt=""
-            className="rounded-full border inline-block"
+            className="rounded-full"
             priority
           />
         </div>
