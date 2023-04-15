@@ -25,7 +25,7 @@ const Header = () => {
             width={50}
             height={40}
             alt=""
-            className="rounded-full"
+            className="rounded-full p-2"
             priority
           />
         </div>
