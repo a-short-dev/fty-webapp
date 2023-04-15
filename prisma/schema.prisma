@@ -11,41 +11,20 @@ datasource db {
 }
 
 model User {
-  id             String        @id @default(auto()) @map("_id") @db.ObjectId
-  email          String        @unique
+  id             String    @id @default(auto()) @map("_id") @db.ObjectId
+  email          String    @unique
   firstName      String
   lastName       String
-  emailVerified  DateTime?
-  phone          String        @unique
+  phone          String    @unique
   hashedPassword String
-  role           Int           @default(1450)
-  createdAt      DateTime      @default(now())
-  updatedAt      DateTime      @default(now())
-  wallet         Wallet[]
-  profile        Profile?
-  Application    Application?
-  Account        Account[]
-  Transactions   Transactions?
-  Log            Log?
-}
+  role           Int       @default(1450)
+  emailVerified  DateTime?
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
 
-model Profile {
-  id            String   @id @default(auto()) @map("_id") @db.ObjectId
-  dob           DateTime
-  bvn           String
-  address       String
-  lgaOrigin     String
-  lgaCurrent    String
-  nokName       String
-  nokRelation   String
-  nokNumber     String
-  stateOfOrigin String
-  maritalStatus String
-  nationality   String
-  createdAt     DateTime @default(now())
-  updatedAt     DateTime @updatedAt
-  user          User     @relation(fields: [userId], references: [id])
-  userId        String   @unique @db.ObjectId
+  accounts     Account[]
+  wallets      Wallet[]
+  transactions Transaction[]
 }
 
 model Account {
@@ -67,28 +46,26 @@ model Account {
 }
 
 model Wallet {
-  id      String @id @default(auto()) @map("_id") @db.ObjectId
-  type    String
-  balance String
-  user    User   @relation(fields: [userId], references: [id])
-  userId  String @unique @db.ObjectId
+  id          String        @id @default(auto()) @map("_id") @db.ObjectId
+  userId      String        @db.ObjectId
+  type        String
+  balance     Int
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+  User        User          @relation(fields: [userId], references: [id])
+  Transaction Transaction[]
 }
 
-model Transactions {
-  id     String @id @default(auto()) @map("_id") @db.ObjectId
-  user   User   @relation(fields: [userId], references: [id])
-  userId String @unique @db.ObjectId
-}
-
-model Log {
-  id     String @id @default(auto()) @map("_id") @db.ObjectId
-  user   User   @relation(fields: [userId], references: [id])
-  userId String @unique @db.ObjectId
-}
-
-model Application {
-  id     String @id @default(auto()) @map("_id") @db.ObjectId
-  amount String
-  user   User   @relation(fields: [userId], references: [id])
-  userId String @unique @db.ObjectId
+model Transaction {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  userId    String   @db.ObjectId
+  walletId  String   @db.ObjectId
+  type      String
+  amount    Int
+  balance   Int
+  status    Int
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  Wallet    Wallet   @relation(fields: [walletId], references: [id])
+  User      User     @relation(fields: [userId], references: [id])
 }
