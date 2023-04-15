@@ -1,8 +1,8 @@
-import React, { ReactNode } from "react";
-import Header from "./components/Header";
+import React from "react";
+import getCurrentUser from "../actions/getCurrentUser";
 import ClientOnly from "../components/ClientOnly";
 import EmptyState from "../components/EmptyState";
-import getCurrentUser from "../actions/getCurrentUser";
+import Header from "./components/Header";
 
 interface Dash {
   children: React.ReactNode;
