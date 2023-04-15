@@ -15,7 +15,7 @@ model User {
   email          String    @unique
   firstName      String
   lastName       String
-  phone          Int       @unique
+  phone          String    @unique
   hashedPassword String
   role           Int       @default(1450)
   emailVerified  DateTime?

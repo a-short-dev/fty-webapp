@@ -7,7 +7,7 @@ import Header from "./components/Header";
 interface Dash {
   children: React.ReactNode;
 }
-export default async function  DashboardLyout({ children }: Dash) {
+export default async function DashboardLyout({ children }: Dash) {
   const currentUser = await getCurrentUser();
   if (!currentUser) {
     return (
@@ -17,9 +17,9 @@ export default async function  DashboardLyout({ children }: Dash) {
     );
   }
   return (
-    <div className="bg-red-200 min-h-screen">
-      <Header />
-      <div className="relative top-16 px-5">{children}</div>
+    <div className="bg-slate-500 min-h-screen">
+      <Header firstName={currentUser?.firstName} />
+      <div className="relative top-16 px-5 py-10">{children}</div>
     </div>
   );
 }

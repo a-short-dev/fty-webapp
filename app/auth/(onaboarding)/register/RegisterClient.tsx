@@ -31,6 +31,7 @@ const RegisterClient = () => {
       .post("/api/register", data)
       .then(() => {
         toast.success("Registered!");
+        router.push("/");
       })
       .catch((error) => {
         toast.error(error);
