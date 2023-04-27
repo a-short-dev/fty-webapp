@@ -17,7 +17,7 @@ const Navlinks = ({ label, icon: Icon, link, selected }: NavLinkProps) => {
                 flex
                 items-center
                 font-normal
-                text-3xl
+                text-2xl
                 gap-2.5
                 cursor-pointer
                 "

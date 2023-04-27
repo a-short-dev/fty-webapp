@@ -89,7 +89,7 @@ const Nav = ({ isOpen, onClose, disabled }: NavProps) => {
 						size={24}
 						className="text-red-200"
 					/>
-					<p className="text-slate-500 text-2xl font-bold">Say Bye</p>
+					<p className="text-slate-500 text-xl font-bold">Say Bye</p>
 				</div>
 			</div>
 		</div>
