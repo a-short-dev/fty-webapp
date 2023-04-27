@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import Header from './Header';
 import Nav from './Nav';
 
-const HN = () => {
+const HN = (user: any) => {
 	const [isOpen, setIsOpen] = useState(false);
 
 	function toggleNav() {
@@ -13,7 +13,10 @@ const HN = () => {
 	}
 	return (
 		<div>
-			<Header isOpen={toggleNav} />
+			<Header
+				firstName={user.firstName}
+				isOpen={toggleNav}
+			/>
 			<Nav
 				isOpen={isOpen}
 				onClose={() => setIsOpen(false)}

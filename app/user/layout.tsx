@@ -37,7 +37,7 @@ export default async function DashboardLyout({ children }: Dash) {
 	return (
 		<div className="bg-slate-500 min-h-screen">
 			<ClientOnly>
-				<HN />
+				<HN user={currentUser} />
 			</ClientOnly>
 			<div className="relative top-16 px-5 py-10">{children}</div>
 		</div>
