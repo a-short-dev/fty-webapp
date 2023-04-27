@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import Header from './Header';
 import Nav from './Nav';
 
-const HN = (user: any) => {
+const HN = ({ user }: any) => {
 	const [isOpen, setIsOpen] = useState(false);
 
 	function toggleNav() {
@@ -15,6 +15,7 @@ const HN = (user: any) => {
 		<div>
 			<Header
 				firstName={user.firstName}
+				avatar={user.avatar}
 				isOpen={toggleNav}
 			/>
 			<Nav

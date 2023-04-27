@@ -28,17 +28,10 @@ export default async function DashboardLyout({ children }: Dash) {
 		//start onboarding process
 	}
 
-	let isNavOpen = false;
-
-	function toggleNav() {
-		isNavOpen = !isNavOpen;
-	}
-
 	return (
 		<div className="bg-slate-500 min-h-screen">
-			<ClientOnly>
-				<HN user={currentUser} />
-			</ClientOnly>
+			<HN user={currentUser} />
+
 			<div className="relative top-16 px-5 py-10">{children}</div>
 		</div>
 	);

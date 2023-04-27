@@ -47,7 +47,7 @@ const Nav = ({ isOpen, onClose, disabled }: NavProps) => {
 		setShowNav(false);
 		setTimeout(() => {
 			onClose();
-		}, 3500);
+		}, 300);
 	}, [onClose, disabled]);
 
 	if (!isOpen) {
@@ -55,7 +55,7 @@ const Nav = ({ isOpen, onClose, disabled }: NavProps) => {
 	}
 	return (
 		<div
-			className={`bg-gray-50 h-screen w-1/3 fixed z-30 translate
+			className={`bg-gray-50 h-screen w-2/3 sm:w-1/3 fixed z-30 translate
 			duration-300
 			${showNav ? 'translate-y-0' : 'translate-y-full'}
 			${showNav ? 'opacity-100' : 'opacity-0'} `}
@@ -71,7 +71,7 @@ const Nav = ({ isOpen, onClose, disabled }: NavProps) => {
 			>
 				<div
 					onClick={handleClose}
-					className="absolute top-20 right-2"
+					className="absolute top-20 right-2 cursor"
 				>
 					<AiOutlineClose size={24} />
 				</div>

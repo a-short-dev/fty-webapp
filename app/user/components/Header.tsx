@@ -12,11 +12,10 @@ const Header = ({ firstName, avatar, isOpen }: HeaderProps) => {
 	return (
 		<div className="fixed z-40 transition top-0 w-full bg-white shadow">
 			<div className="flex items-center justify-between px-5 py-3">
-				<div
-					onClick={isOpen}
-					className="flex items-center gap-2 cursor-pointer"
-				>
-					<AiOutlineMenu size={20} />
+				<div className="flex items-center gap-2 cursor-pointer">
+					<div onClick={isOpen}>
+						<AiOutlineMenu size={20} />
+					</div>
 					<h3 className="font-medium text-lg">Hi,{firstName || 'User'}</h3>
 				</div>
 				<div className="flex items-center gap-2">
