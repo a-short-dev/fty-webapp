@@ -15,6 +15,7 @@ export const authOptions: AuthOptions = {
 			credentials: {
 				email: { label: 'email', type: 'text' },
 				password: { label: 'password', type: 'password' },
+				
 			},
 			async authorize(credentials) {
 				if (!credentials?.email || !credentials?.password) {
@@ -45,7 +46,7 @@ export const authOptions: AuthOptions = {
 		}),
 	],
 	pages: {
-		signIn: '/auth/login',
+		signIn: '/',
 	},
 	debug: process.env.NODE_ENV === 'development',
 	session: {
