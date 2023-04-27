@@ -1,94 +1,98 @@
-"use client";
+'use client';
 
-import FormInput from "../components/input/FormIputs";
-import { useState } from "react";
-import { signIn } from "next-auth/react";
+import FormInput from '../components/input/FormIputs';
+import { useState } from 'react';
+import { signIn } from 'next-auth/react';
 
-import { useRouter } from "next/navigation";
-import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
-import { toast } from "react-hot-toast";
-import Link from "next/link";
+import { useRouter } from 'next/navigation';
+import { FieldValues, SubmitHandler, useForm } from 'react-hook-form';
+import { toast } from 'react-hot-toast';
+import Link from 'next/link';
+import Button from '../components/button/Button';
 
 const LoginClient = () => {
-  const router = useRouter();
-  const [isLoading, setIsLoading] = useState(false);
+	const router = useRouter();
+	const [isLoading, setIsLoading] = useState(false);
 
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm<FieldValues>({
-    defaultValues: {
-      email: "",
-      password: "",
-    },
-  });
+	const {
+		register,
+		handleSubmit,
+		formState: { errors },
+	} = useForm<FieldValues>({
+		defaultValues: {
+			email: '',
+			password: '',
+		},
+	});
 
-  const onSubmit: SubmitHandler<FieldValues> = (data) => {
-    setIsLoading(true);
+	const onSubmit: SubmitHandler<FieldValues> = (data) => {
+		setIsLoading(true);
 
-    signIn("credentials", {
-      ...data,
-      redirect: false,
-    }).then((callback) => {
-      setIsLoading(false);
+		signIn('credentials', {
+			...data,
+			redirect: false,
+		}).then((callback) => {
+			setIsLoading(false);
 
-      if (callback?.ok) {
-        toast.success("Logged in");
-        //add router to dashboard
-        router.push("/user/dashboard");
-      }
+			if (callback?.ok) {
+				toast.success('Logged in');
+				//add router to dashboard
+				router.push('/user/dashboard');
+			}
 
-      if (callback?.error) {
-        toast.error(callback.error);
-      }
-    });
-  };
-  return (
-    <>
-      {" "}
-      <div className="flex flex-col items-center justify-center min-h-screen mx-auto bg-gray-800/60">
-        <div className="relative flex flex-col p-5 sm:p-10  rounded-3xl sm:bg-slate-500 sm:w-2/4 lg:w-3/6 xl:w-2/6 sm:shadow space-y-10  ">
-          <h1 className="text-xl font-bold text-slate-50 sm:text-black sm:text-3xl ">
-            Login to continue
-          </h1>
-          <form
-            onSubmit={handleSubmit(onSubmit)}
-            className="mt-5 flex md:p-2.5 p-0 flex-col gap-10"
-          >
-            <FormInput
-              id="email"
-              type="email"
-              label="Email"
-              disabled={isLoading}
-              register={register}
-              errors={errors}
-              required
-            />
-            <FormInput
-              id="password"
-              type="password"
-              label="Password"
-              disabled={isLoading}
-              register={register}
-              errors={errors}
-              required
-            />
-            <button
-              type="submit"
-              className="bg-pink-400 rounded-md focus:outline-transparent h-12 sm:h-14 cursor-pointer text-lg sm:text-2xl text-white font-semibold hover:-translate-y-1 transition-all duration-150 ease-out"
-            >
-              Log in
-            </button>
-          </form>
-          <p className="text-base font-medium">
-            Don&apos;t have an account?{" "}
-            <Link href="/auth/register">Sign up</Link>
-          </p>
-        </div>
-      </div>
-    </>
-  );
+			if (callback?.error) {
+				toast.error(callback.error);
+			}
+		});
+	};
+	return (
+		<>
+			<div className="w-full min-h-screen flex justify-center items-center p-4  bg-zinc-50">
+				<div className="w-[670px] bg-white rounded-xl overflow-hidden relative shadow">
+					<div className="w-full relative  flex flex-wrap flex-col items-center p-8 sm:p-16 bg-purple-300">
+						<h1 className="text-3xl font-bold text-white">SIGN IN</h1>
+					</div>
+					<form className="mt-4 w-full flex flex-col gap-8 justify-between p-4 sm:p-16">
+						<FormInput
+							id="email"
+							type="email"
+							label="Email"
+							disabled={isLoading}
+							register={register}
+							errors={errors}
+							required
+						/>
+						<FormInput
+							id="password"
+							type="password"
+							label="Password"
+							disabled={isLoading}
+							register={register}
+							errors={errors}
+							required
+						/>
+
+						<Button
+							label="Log In"
+							disabled={isLoading}
+							onClick={handleSubmit(onSubmit)}
+							isLodading={isLoading}
+						/>
+
+						<div className="flex items-center justify-center gap-0.5 text-base">
+							<p className="text-gray-500">Don&apos;t have an account?</p>
+							<Link
+								className="text-purple-400"
+								href="/auth/register"
+							>
+								Sign up
+							</Link>
+						</div>
+					</form>
+				</div>
+			</div>
+		</>
+	);
 };
 
 export default LoginClient;

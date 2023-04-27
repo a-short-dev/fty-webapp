@@ -1,28 +1,40 @@
-import Image from "next/image";
-import React from "react";
-import { AiOutlineBell } from "react-icons/ai";
+import Image from 'next/image';
+import React from 'react';
+import { AiOutlineBell, AiOutlineMenu } from 'react-icons/ai';
 
 interface HeaderProps {
-  firstName?: string | null | undefined;
-  avatar?: string | null | undefined;
+	firstName?: string | null | undefined;
+	avatar?: string | null | undefined;
+  isOpen:
 }
 
-const Header = ({ firstName, avatar }: HeaderProps) => {
-  return (
-    <div className="fixed z-40 transition top-0 w-full bg-white shadow">
-      <div className="flex items-center justify-between px-5 py-3">
-        <h3 className="font-medium text-lg">Hi,{firstName || "User"}</h3>
-        <div className="flex items-center gap-2">
-          <div className="relative">
-            <AiOutlineBell size={24} className="rounded-md font-medium" />
-          </div>
-          <div className=" rounded-full w-10 h-10 border px-2 relative">
-            <Image src={avatar || "/next.svg"} fill alt="" priority />
-          </div>
-        </div>
-      </div>
-    </div>
-  );
+const Header = ({ firstName, avatar, isOpen }: HeaderProps) => {
+	return (
+		<div className="fixed z-40 transition top-0 w-full bg-white shadow">
+			<div className="flex items-center justify-between px-5 py-3">
+				<div className="flex items-center gap-2">
+					<AiOutlineMenu size={20} />
+					<h3 className="font-medium text-lg">Hi,{firstName || 'User'}</h3>
+				</div>
+				<div className="flex items-center gap-2">
+					<div
+						onClick={isOpen}
+						className="relative"
+					>
+						<AiOutlineBell size={20} />
+					</div>
+					<div className=" rounded-full w-10 h-10 border px-2 relative">
+						<Image
+							src={avatar || '/next.svg'}
+							fill
+							alt=""
+							priority
+						/>
+					</div>
+				</div>
+			</div>
+		</div>
+	);
 };
 
 export default Header;
