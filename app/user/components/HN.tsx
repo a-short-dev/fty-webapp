@@ -1,22 +1,22 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, {  useCallback, useRef, useState } from 'react';
 import Header from './Header';
 import Nav from './Nav';
 
 const HN = ({ user }: any) => {
 	const [isOpen, setIsOpen] = useState(false);
 
-	function toggleNav() {
-		setIsOpen(true);
-		console.log('hi');
-	}
+	const toggleOpen = useCallback(() => {
+		setIsOpen((value) => !value);
+	}, []);
 	return (
 		<div>
 			<Header
+			
 				firstName={user.firstName}
 				avatar={user.avatar}
-				isOpen={toggleNav}
+				isOpen={toggleOpen}
 			/>
 			<Nav
 				isOpen={isOpen}
