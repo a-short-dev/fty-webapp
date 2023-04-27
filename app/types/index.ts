@@ -1,4 +1,4 @@
-import { User } from "@prisma/client";
+import { Transaction, User } from "@prisma/client";
 
 export type SafeUser = Omit<
   User,
@@ -7,4 +7,8 @@ export type SafeUser = Omit<
   hashedPassword: string;
   createdAt: string;
   updatedAt: string;
+};
+
+export type SafeTransaction = Omit<Transaction, "createdAt"> & {
+  createdAt: String;
 };
