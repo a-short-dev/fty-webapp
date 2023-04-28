@@ -45,7 +45,7 @@ const DashboardClient = () => {
 			</div>
 
 			<div className="mt-5">
-				<h3 className="text-fuchsia-200 font-medium text-xl">Transactions</h3>
+				<h3 className="text-slate-600 font-medium text-lg mb-3">Transactions</h3>
 
 				<div className="bg-white h-auto overflow-hidden rounded p-2">
 					No transactions

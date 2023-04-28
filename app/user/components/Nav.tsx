@@ -13,17 +13,17 @@ export const navMenu = [
 	{
 		label: 'Home',
 		icon: AiOutlineHome,
-		link: 'dashboard',
+		link: '/user/dashboard',
 	},
 	{
 		label: 'Wallet',
 		icon: AiOutlineWallet,
-		link: 'wallet',
+		link: '/user/wallet',
 	},
 	{
 		label: 'Settings',
 		icon: AiOutlineSetting,
-		link: 'settings',
+		link: '/user/settings',
 	},
 ];
 
