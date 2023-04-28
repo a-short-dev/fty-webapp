@@ -8,6 +8,7 @@ import {
 	AiOutlineSetting,
 	AiOutlineWallet,
 } from 'react-icons/ai';
+import { signOut } from 'next-auth/react';
 
 export const navMenu = [
 	{
@@ -84,7 +85,10 @@ const Nav = ({ isOpen, onClose, disabled }: NavProps) => {
 					/>
 				))}
 
-				<div className="mt-72 flex items-center gap-2 cursor-pointer">
+				<div
+					onClick={() => signOut()}
+					className="mt-72 flex items-center gap-2 cursor-pointer"
+				>
 					<AiOutlineLogout
 						size={24}
 						className="text-red-200"

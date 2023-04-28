@@ -1,7 +1,7 @@
 'use client';
 import Modal from '@/app/components/Modal';
 import FormInput from '@/app/components/input/FormIputs';
-import useModal from '@/app/hooks/useModal';
+import useWelcomeModal from '@/app/hooks/useModal/useWelcomeModal';
 import useMultiStepForm from '@/app/hooks/useMultiStepForm';
 import { useRouter } from 'next/navigation';
 import React, { useState } from 'react';
@@ -18,8 +18,8 @@ interface FormProps {
 }
 
 const WelcomeModal = () => {
+	const modal = useWelcomeModal();
 	const router = useRouter();
-	const modal = useModal();
 
 	const {
 		register,
@@ -80,10 +80,6 @@ const WelcomeModal = () => {
 			body={step}
 		/>
 	);
-
-	function handleClick() {
-		next;
-	}
 };
 
 function kycDocuments({ register, errors }: FormProps) {

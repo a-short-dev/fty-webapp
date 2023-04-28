@@ -4,7 +4,7 @@ import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import React, { useState, useCallback } from 'react';
 import { AiOutlineBell, AiOutlineClose, AiOutlineMenu } from 'react-icons/ai';
-
+import { signOut } from 'next-auth/react';
 interface HeaderProps {
 	firstName?: string | null | undefined;
 	avatar?: string | null | undefined;
@@ -83,7 +83,7 @@ const Header = ({ firstName, avatar, isOpen }: HeaderProps) => {
 									/>
 									<MenuItem
 										label="Log out"
-										onClick={() => router.push('profile')}
+										onClick={() => signOut()}
 									/>
 								</div>
 							</div>

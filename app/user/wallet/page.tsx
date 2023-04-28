@@ -1,11 +1,11 @@
 import ClientOnly from '@/app/components/ClientOnly';
 import React from 'react';
-import SettingsClient from './SettingsClient';
+import WalletClient from './WalletClient';
 
 export default function page() {
 	return (
 		<ClientOnly>
-			<SettingsClient />
+			<WalletClient />
 		</ClientOnly>
 	);
 }

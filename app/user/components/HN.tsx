@@ -3,31 +3,32 @@
 import { useCallback, useEffect, useState } from 'react';
 import Header from './Header';
 import Nav from './Nav';
-import useModal from '@/app/hooks/useModal';
+
+import useWelcomeModal from '@/app/hooks/useModal/useWelcomeModal';
 
 const HN = ({ user }: any) => {
 	const [isOpens, setIsOpen] = useState(false);
-	const { onOpen } = useModal();
+	const { onOpen } = useWelcomeModal();
 
 	const toggleOpen = useCallback(() => {
 		setIsOpen((value) => !value);
 	}, []);
-	const modal = useModal();
-
-	let test = true;
+	const modal = useWelcomeModal();
 
 	useEffect(() => {
-		if (user?.isVerified === 0 || test) {
+		if (user?.isVerified === 0) {
 			onOpen();
 		}
-	}, [user?.isVerified, onOpen, test]);
+	}, [user?.isVerified, onOpen]);
 	return (
 		<div>
+			
 			<Header
-				firstName={user?.firstName}
-				avatar={user?.avatar}
+				firstName={user.firstName}
+				avatar={user.avatar}
 				isOpen={toggleOpen}
 			/>
+			
 			<Nav
 				isOpen={isOpens}
 				onClose={() => setIsOpen(false)}
