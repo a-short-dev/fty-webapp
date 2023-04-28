@@ -1,9 +1,12 @@
 'use client';
+import useWelcomeModal from '@/app/hooks/useModal/useWelcomeModal';
 import React, { useCallback, useState } from 'react';
 import { AiOutlineEye } from 'react-icons/ai';
 
 const WalletClient = () => {
 	const [showM, setShowM] = useState(true);
+
+	const modal = useWelcomeModal();
 
 	const toggleOpen = useCallback(() => {
 		setShowM((value) => !value);
@@ -24,9 +27,19 @@ const WalletClient = () => {
 					</div>
 				</div>
 
-				<div>
-					<button>Deposit</button>
-					<button>Withdraw</button>
+				<div className="flex flex-col md:flex-row gap-4 items-center mt-5">
+					<button
+						onClick={modal.onOpen}
+						className="bg-purple-400 font-medium p-3 text-base uppercase rounded text-white"
+					>
+						Deposit
+					</button>
+					<button
+						onClick={modal.onOpen}
+						className="bg-purple-400 font-medium p-3 text-base uppercase rounded text-white"
+					>
+						Withdraw
+					</button>
 				</div>
 			</div>
 
