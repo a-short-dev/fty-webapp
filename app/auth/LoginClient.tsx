@@ -48,8 +48,8 @@ const LoginClient = () => {
 	return (
 		<>
 			<div className="w-full min-h-screen flex justify-center items-center p-4  bg-zinc-50">
-				<div className="w-[670px] bg-white rounded-xl overflow-hidden relative shadow">
-					<div className="w-full relative  flex flex-wrap flex-col items-center p-8 sm:p-16 bg-purple-300">
+				<div className="w-[670px] bg-white rounded-xl overflow-hidden relative shadow ">
+					<div className="w-full relative  flex flex-wrap flex-col items-center p-8 sm:p-16 bg-img">
 						<h1 className="text-3xl font-bold text-white">SIGN IN</h1>
 					</div>
 					<form className="mt-4 w-full flex flex-col gap-8 justify-between p-4 sm:p-16">

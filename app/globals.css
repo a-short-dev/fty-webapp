@@ -2,4 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+.bg-img {
+    background-image: url('../public/form-bg.jpg');
+    background-position: fixed;
+    top: 8;
+  
+}
+
+
 

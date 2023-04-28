@@ -14,16 +14,18 @@ const HN = ({ user }: any) => {
 	}, []);
 	const modal = useModal();
 
+	let test = true;
+
 	useEffect(() => {
-		if (user.isVerified === 0) {
+		if (user?.isVerified === 0 || test) {
 			onOpen();
 		}
-	}, [user.isVerified, onOpen]);
+	}, [user?.isVerified, onOpen, test]);
 	return (
 		<div>
 			<Header
-				firstName={user.firstName}
-				avatar={user.avatar}
+				firstName={user?.firstName}
+				avatar={user?.avatar}
 				isOpen={toggleOpen}
 			/>
 			<Nav

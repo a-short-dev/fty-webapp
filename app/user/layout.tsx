@@ -27,7 +27,7 @@ export default async function DashboardLyout({ children }: Dash) {
 	}
 
 	return (
-		<div className="bg-slate-500 min-h-screen">
+		<div className="bg-slate-500 min-h-screen overflow-hidden">
 			<HN user={currentUser} />
 			<WelcomeModal />
 			<div className="relative top-16 px-5 py-10">{children}</div>

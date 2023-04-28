@@ -83,7 +83,7 @@ const Header = ({ firstName, avatar, isOpen }: HeaderProps) => {
 									/>
 									<MenuItem
 										label="Log out"
-										onClick={() => router.push('/user/profile')}
+										onClick={() => router.push('profile')}
 									/>
 								</div>
 							</div>

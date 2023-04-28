@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
  *@param {ReactElement[]} steps .
  **/
 
-const useMultiStepForm = (steps: ReactElement[]) => {
+const useMultiStepForm = (steps: string | any[]) => {
 	const [currentStepIndex, setCurrentStepIndex] = useState(0);
 
 	function next() {
