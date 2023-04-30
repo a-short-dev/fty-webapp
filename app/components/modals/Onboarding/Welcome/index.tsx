@@ -44,7 +44,57 @@ const WelcomeModal = () => {
 		/>,
 	]);
 
-	const bodyContent = (
+	const bodyContent = <form>{step}</form>;
+
+	return (
+		<Modal
+			disabled={isLoading}
+			isOpen={modal.isOpen}
+			title="Welcome"
+			actionLabel="Continue"
+			onClose={modal.onClose}
+			onClick={next}
+			body={bodyContent}
+		/>
+	);
+};
+
+function kycDocuments({ register, errors }: FormProps) {
+	return (
+		<div>
+			<FormInput
+				id="bvn"
+				type="text"
+				label="bvn"
+				register={register}
+				errors={errors}
+			/>
+			<div className="flex mt-5 items-center gap-5">
+				<FormInput
+					id="date"
+					label="Date"
+					register={register}
+					errors={errors}
+				/>
+
+				<FormInput
+					id="month"
+					label="Month"
+					register={register}
+					errors={errors}
+				/>
+				<FormInput
+					id="year"
+					label="Year"
+					register={register}
+					errors={errors}
+				/>
+			</div>
+		</div>
+	);
+}
+function Welcome() {
+	return (
 		<div>
 			<h6
 				className="
@@ -68,116 +118,39 @@ const WelcomeModal = () => {
 			</ul>
 		</div>
 	);
-
-	return (
-		<Modal
-			disabled={isLoading}
-			isOpen={modal.isOpen}
-			title="Welcome"
-			actionLabel="Continue"
-			onClose={modal.onClose}
-			onClick={next}
-			body={step}
-		/>
-	);
-};
-
-function kycDocuments({ register, errors }: FormProps) {
-	return (
-		<div>
-			<form>
-				<FormInput
-					id="bvn"
-					type="text"
-					label="bvn"
-					register={register}
-					errors={errors}
-				/>
-				<div className="flex mt-5 items-center gap-5">
-					<FormInput
-						id="date"
-						label="Date"
-						register={register}
-						errors={errors}
-					/>
-
-					<FormInput
-						id="month"
-						label="Month"
-						register={register}
-						errors={errors}
-					/>
-					<FormInput
-						id="year"
-						label="Year"
-						register={register}
-						errors={errors}
-					/>
-				</div>
-			</form>
-		</div>
-	);
-}
-function Welcome() {
-	return (
-		<div>
-			<h6
-				className="
-		text-lg 
-		font-medium 
-		text-slate-900"
-			>
-				Thank you for singing up with us.
-			</h6>
-			<br />
-			<p className="text-base font-normal">
-				Before you can apply for a loan you need to give us some more
-				information.
-			</p>
-			<p className="text-base font-normal">You need to have the following</p>
-			<ul className="mt-2 text-base font-medium">
-				<li>A valid BVN.</li>
-				<li>Uilitiy bill for current address.</li>
-				<li>Bank statement.</li>
-				<li>Valid means of Identification.</li>
-			</ul>
-		</div>
-	);
 }
 
 function BvnVerifation({ register, errors }: FormProps) {
 	return (
 		<div>
-			<form>
+			<FormInput
+				id="bvn"
+				type="text"
+				label="bvn"
+				register={register}
+				errors={errors}
+			/>
+			<div className="flex mt-5 items-center gap-5">
 				<FormInput
-					id="bvn"
-					type="text"
-					label="bvn"
+					id="date"
+					label="Date"
 					register={register}
 					errors={errors}
 				/>
-				<div className="flex mt-5 items-center gap-5">
-					<FormInput
-						id="date"
-						label="Date"
-						register={register}
-						errors={errors}
-					/>
 
-					<FormInput
-						id="month"
-						label="Month"
-						register={register}
-						errors={errors}
-					/>
-					<FormInput
-						id="year"
-						label="Year"
-						register={register}
-						errors={errors}
-					/>
-				</div>
-			</form>
+				<FormInput
+					id="month"
+					label="Month"
+					register={register}
+					errors={errors}
+				/>
+				<FormInput
+					id="year"
+					label="Year"
+					register={register}
+					errors={errors}
+				/>
+			</div>
 		</div>
 	);
 }
